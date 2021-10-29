@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="box">
+    <div class="side">
+      <div class="item" id="1"> </div>
+      <div class="item" id="2"> </div>
+      <div class="item" id="3"> </div>
+      <div class="item" id="4"> </div>
+      <div class="item" id="5"> </div>
+      <div class="item" id="6"> </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
+
+<script>
+  const divs = document.querySelectorAll(".item");
+  console.log(divs);
+  for (div of divs) {
+    div.addEventListener('click', e => {
+      console.log("点击" + e.target.id);
+      for (let i = 1; i <= 6; ++i) {
+        if (i == e.target.id) {
+          document.getElementById(i.toString()).style.background = "white";
+          continue;
+        } else if (i == parseInt(e.target.id) - 1) {
+          document.getElementById(i.toString()).style.borderRadius = "0 0 20px 0px"
+        } else if (i == parseInt(e.target.id) + 1) {
+          document.getElementById(i.toString()).style.borderRadius = "0 20px 0px 0px"
+        } else {
+          document.getElementById(i.toString()).style.borderRadius = "0 0px 0px 0px"
+        }
+        const x = document.getElementById(i.toString());
+        console.log(x);
+        x.style.background = "#eee";
+      }
+    })
+  }
+
+</script>
+
+<style>
+  .box {
+    width: 300px;
+    border: 1px solid #333;
+  }
+
+  .side {
+    width: 100px;
+    /* border: 1px solid #eee; */
+  }
+
+  .item {
+    height: 96px;
+    width: 100px;
+    /* border: 2px solid blue; */
+    background-color: #eee;
+  }
+</style>
